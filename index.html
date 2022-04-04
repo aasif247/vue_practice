@@ -13,12 +13,25 @@
     </div>
     
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                message: 'Asif Talukdar'
+        // vue 2
+        // new Vue({
+        //     el: '#app',
+        //     data: {
+        //         message: 'Asif Talukdar'
+        //     }
+        // });
+
+        //vue 3 (normal js)
+        const app = Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello World'
+                }
             }
         });
+        app.mount('#app')
+
+        
     </script>
 </body>
 </html>
