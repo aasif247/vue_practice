@@ -22,16 +22,22 @@
         // });
 
         //vue 3 (normal js)
+        // const app = Vue.createApp({
+        //     data() {
+        //         return {
+        //             message: 'Hello World'
+        //         }
+        //     }
+        // });
+        // app.mount('#app')
+
+        // vue 3 (ES6)
         const app = Vue.createApp({
-            data() {
-                return {
+            data:() => ({
                     message: 'Hello World'
-                }
-            }
+                })
         });
         app.mount('#app')
-
-        
     </script>
 </body>
 </html>
