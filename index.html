@@ -10,6 +10,8 @@
 <body>
     <div id="app">
         <h1>{{ message }}</h1>
+        <p>{{ helloWorld() }}</p>
+        <p>{{ welcome('node.js') }}</p>
     </div>
     
     <script>
@@ -35,7 +37,15 @@
         const app = Vue.createApp({
             data:() => ({
                     message: 'Hello World'
-                })
+                }),
+            methods:{
+                helloWorld(){
+                    return this.message +' Vue js Method';
+                },
+                welcome(x){
+                    return 'Welcome to '+x+' method';
+                }
+            }
         });
         app.mount('#app')
     </script>
