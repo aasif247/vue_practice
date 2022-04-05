@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3.2.31"></script>
+
+    <style>
+        .image{
+            width:300px;
+            height:300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h4>
+            Title: {{ title }}
+            <br>
+            Link: {{ link }}
+        </h4>
+
+        <a v-bind:href="link" v-bind:title="title">
+            {{ title }}
+        </a>
+
+        <img v-bind:src="image" alt="Asif" v-bind:class="sizeClass">
+
+        <form action="" >
+            <input type="text" v-bind:value="name">
+            <input type="text" v-bind:value="email">
+        </form>
+        <div v-html="content"></div>
+    </div>
+
+    <script>
+        Vue.createApp({
+            data:() => ({
+                title: 'Gadget Shed BD',
+                link: "https://www.gadgetshedbd.com",
+                image: 'asif.jpg',
+                sizeClass: 'image',
+                // isActive: true,
+                name: 'Asif Talukdar',
+                email: 'asiftalukdar21@gmail.com',
+                content: '<p>This is a paragraph tag</p>'
+            }),
+        }).mount('#app');
+
+    </script>
+</body>
+</html>
