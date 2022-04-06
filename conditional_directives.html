@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@3.2.31"></script>  
+</head>
+<body>
+    <div id="app">
+        <h1 align="center">Vue JS Conditional Directives</h1>
+
+        <h4 v-if="count == 0">This is if Statement</h4>
+        <h4 v-else-if="count == 1">This is else if Statement</h4>
+        <h4 v-else="">This is else Statement</h4>
+
+        <button @click="countIncrement()">Increment</button>
+        <h5>Count:{{ count }}</h5>
+        <button @click="countDecrement()">Decrement</button>
+
+        <h2 v-show="isActive">This is show directives</h2>
+
+        <h2 v-if="isActive">This is if directives</h2>
+        
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data:() => ({
+                isActive: false,
+                count:0,
+            }),
+            methods:{
+                countIncrement() {
+                    return this.count++;
+                },
+                countDecrement() {
+                    return this.count--;
+                }
+            }
+        });
+        app.mount('#app')
+    </script>
+</body>
+</html>
