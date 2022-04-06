@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@3.2.31"></script>  
+</head>
+<body>
+    <div id="app">
+        <h1 align="center">for loop</h1>
+
+        <ul>
+            <!-- <li v-for="(teacher,i) in teachers">{{ i+1 }}.{{teacher}}</li> -->
+
+            <li v-for="(teacher,i) in teachers">
+                {{ i+1 }}.{{teacher.name}} -- {{ teacher.subject }}
+                <ul>
+                    <li v-for="(value,key) in teacher.location">
+                        {{ key }} : {{ value }}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data:() => ({
+                teachers:[
+                    {name:'Asif',subject:'CSE', location:{address:"Address of Asif",city:'Dhaka',thana:'Ramna'}},
+
+                    {name:'Anis',subject:'EEE', location:{address:"Address of Anis",city:'Chittagong',thana:'Kotowali'}},
+
+                    {name:'Abir',subject:'ETE', location:{address:"Address of Abir",city:'Barisal',thana:'Mehendiganj'}}
+                ]
+            }),
+            methods:{
+                
+            }
+        });
+        app.mount('#app')
+    </script>
+</body>
+</html>
