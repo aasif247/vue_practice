@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@3.2.31"></script>  
+</head>
+<body>
+    <div id="app">
+        <h1 align="center">Computed property</h1>
+        <input type="text" v-model="name">
+
+        <table>
+            <tr v-for="(framework,i) in frameworks" :key="framework.name">
+                <td>{{ i+1 }}</td>
+                <td>{{ framework.name }}</td>
+                <td><button @click="remove(i)">X</button></td>
+            </tr>
+        </table>
+        <p>Total Data: {{ totalCount() }}</p>
+        <p>Total Computed Data: {{ totalframeworkCount }}</p>
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data:() => ({
+                name:"",
+                frameworks: [
+                    {name: 'Laravel'},
+                    {name: 'Codeigniter'},
+                    {name: 'Cakephp'},
+                    {name: 'Yii'},
+                    {name: 'Symphony'},
+                ]
+            }),
+            computed:{
+                totalframeworkCount(){
+                    console.log("Computed Method Executed");
+                    return this.frameworks.length;
+                }
+            },
+            methods:{
+                remove(i){
+                    this.frameworks.splice(i,1);
+                },
+                totalCount(){
+                    console.log("Normal Method Executed");
+                    return this.frameworks.length;
+                }
+            }
+        });
+        app.mount('#app')
+    </script>
+</body>
+</html>
