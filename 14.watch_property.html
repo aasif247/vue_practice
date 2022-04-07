@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@3.2.31"></script>  
+</head>
+<body>
+    <div id="app">
+        <h1 align="center">Watch Property</h1>
+        <input type="text" v-model="mobile">
+
+        <h2>firstname</h2>
+        <input type="text" v-model="name.firstname">
+        
+        <h2>lastname</h2>
+        <input type="text" v-model="name.lastname">
+
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data:() => ({
+                mobile:"",
+                name:{
+                    firstname:"",
+                    lastname:""
+                }
+            }),
+            watch:{
+                mobile(newValue,oldValue){
+                    console.log('New='+newValue+'Old='+ oldValue);
+                    if(isNaN(newValue)){
+                        alert("Enter valid mobile number");
+                        this.mobile = oldValue;
+                    }
+                },
+                // 'name.firstname':function(newValue,oldValue){
+                //     console.log('New='+newValue+'Old='+oldValue);
+                // },
+                name:{
+                    deep:true,
+                    handler(newValue,oldValue){
+                        console.log(newValue);
+                    }
+                }
+            }
+        });
+        app.mount('#app')
+    </script>
+</body>
+</html>
