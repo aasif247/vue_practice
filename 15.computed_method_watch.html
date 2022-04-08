@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@3.2.31"></script>  
+</head>
+<body>
+    <div id="app">
+        <h1 align="center">Computed vs Watch vs Method Property</h1>
+        First Number: <input type="text" v-model.number="first_number">
+        <!-- here number is a data type -->
+        Second Number: <input type="text" v-model.number="second_number">
+
+        <h3>Summation: {{ summation }}</h3>
+
+    </div>
+    
+    <script>
+        const app = Vue.createApp({
+            data:() => ({
+                first_number:0,
+                second_number:0,
+                summation:0,
+            }),
+
+            //computed property
+
+            // computed:{
+            //     summation(){
+            //         console.log('method executed');
+            //         return this.first_number + this.second_number;
+            //     }
+            // }
+
+            // normal method
+            // methods:{
+            //     summation(){
+            //         console.log('method executed');
+            //         return this.first_number + this.second_number;
+            //     }
+            // }
+
+            //watch
+            watch:{
+                first_number(value){
+                    this.summation = value + this.second_number;
+                },
+                second_number(value){
+                    this.summation = this.first_number+value;
+                },
+            }
+        });
+        app.mount('#app')
+    </script>
+</body>
+</html>
